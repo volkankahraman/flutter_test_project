@@ -1,15 +1,21 @@
 # Flutter Test Project
 
 Test project for showing posts from an external API. Data and state handled with Bloc Pattern.
+## Check my answers for questions
 
+[Go to answers](Questions.md)
+
+---
 ## Getting Started
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+**To use mock API install package;**
+```
+npm i json-server -g
+```
+**To run mock API locally;**
+``` 
+json-server --watch db.json
+```
 
 For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,

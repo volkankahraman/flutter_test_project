@@ -103,7 +103,7 @@
 
   
 
-7. By default dart assumes every variable is not null. We can’t define a null variable without explicitly saying we want to use null variable and syntax for this is ==?== sign for example;
+7. By default dart assumes every variable is not null. We can’t define a null variable without explicitly saying we want to use null variable and syntax for this is **?** sign for example;
 
 	```dart:
 	String? catName;
@@ -121,7 +121,7 @@
 
   
 
-10. Just like the name suggests const is for constant variables that are immutable variables. There is also another type called ==final==. The main difference between finaland const is that you can’t define an object that has a constructor function with const and the creator of the object class should also be const.
+10. Just like the name suggests const is for constant variables that are immutable variables. There is also another type called **final**. The main difference between finaland const is that you can’t define an object that has a constructor function with const and the creator of the object class should also be const.
 
   
 
