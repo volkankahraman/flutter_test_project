@@ -1,6 +1,12 @@
 # Flutter Test Project
 
 Test project for showing posts from an external API. Data and state handled with Bloc Pattern.
+
+# Images
+<img src="screenshots/ss1.png" alt="Screenshot 1" width="300"/>
+<img src="screenshots/ss2.png" alt="Screenshot 2"  width="300"/>
+<img src="screenshots/use-case.gif" alt="use case gif"  width="300"/>
+
 ## Check my answers for questions
 
 [Go to answers](Questions.md)
