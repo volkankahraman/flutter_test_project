@@ -1,12 +1,13 @@
 # Flutter Test Project
 
-Test project for showing posts from an external API. Data and state handled with Bloc Pattern.
+Test project for showing posts from an external API. Data and state handled with Bloc Pattern. It uses json-server mock API.
 
 # Images
+<p align="center">
+<img src="screenshots/use-case.gif" alt="use case gif"  width="293"/>
 <img src="screenshots/ss1.png" alt="Screenshot 1" width="300"/>
 <img src="screenshots/ss2.png" alt="Screenshot 2"  width="300"/>
-<img src="screenshots/use-case.gif" alt="use case gif"  width="300"/>
-
+</p>
 ## Check my answers for questions
 
 [Go to answers](Questions.md)
