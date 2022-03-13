@@ -3,7 +3,7 @@
 
 # Questions
 
-  
+  [Go to answers](#Answers)
 1. [x] 1. What are the build modes in flutter?
 
 2. [x] 2.Which types of tests are commonly used with Flutter apps?
@@ -18,7 +18,7 @@
 
   
 
-6. [ ] 6.Explain the BLoC pattern and what is it
+6. [x] 6.Explain the BLoC pattern and what is it
 
   
 
@@ -50,7 +50,7 @@
 
   
 
-14. [ ]  14. What would happen if the BLoC package wasn’t used in conjunction with the Equatable package for state classes (extending state classes with Equatable)? Nudge if no answer: you updated state, but BLoC state class doesn’t extend Equatable, what’s the consequence on the UI?
+14. [x]  14. What would happen if the BLoC package wasn’t used in conjunction with the Equatable package for state classes (extending state classes with Equatable)? Nudge if no answer: you updated state, but BLoC state class doesn’t extend Equatable, what’s the consequence on the UI?
 
   
 
@@ -73,7 +73,7 @@
   
 
   
-
+<p id="#the-header"></p>
 1. There is three build modes in flutter;
 
   
@@ -99,7 +99,11 @@
 
   
 
-6. Explain the BLoC pattern and what is it
+6. Bloc means a business logic component. Bloc pattern is a state management library and also helps with structuring your application in layers. There are three layers;
+-   Presentation (UI)    
+-   Business Logic (States and controllers)    
+-   Data (APIs and databases)
+It uses streams, cubits, and blocs. Streams are data flow between layers. Cubits have a one-way stream it provides a stream from business logic to the presentation layer. On the other hand, blocs provide a two-way stream of connection between layers.
 
   
 
@@ -140,7 +144,7 @@
 	This way dart knows that name is the string we don’t need to declare it with a string keyword. We can use this when we don’t know the first value type is going to be but after that dart will throw an error if we set another value type to a variable. 
 	The final keyword is the same as var; it can detect variable type when it is initialized. But the difference is that the value is read-only and we can't change the value of the variable. It is like const but const is compiled time constant but final is runtime constant. That means the const variable will always have the same value when the program runs. But final can have different values on runtime. 
 
-14. What would happen if the BLoC package wasn’t used in conjunction with the Equatable package for state classes (extending state classes with Equatable)? Nudge if no answer: you updated state, but BLoC state class doesn’t extend Equatable, what’s the consequence on the UI?
+14. For honestly I don’t know it fully but Equatable is a package for comparing two class objects overriding **==**. So bloc would not know if the state has been changed or not and could not compare two states and UI would not change and not rebuild.
 
   
 
