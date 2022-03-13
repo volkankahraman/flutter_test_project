@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test_project/components/icon_text_button.dart';
+import 'package:flutter_test_project/models/post.dart';
 
-class Post extends StatelessWidget {
-  const Post({
-    Key? key,
-  }) : super(key: key);
-
+class PostCard extends StatelessWidget {
+  const PostCard({Key? key, required this.post, required this.onDelete})
+      : super(key: key);
+  final Post post;
+  final VoidCallback onDelete;
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -17,11 +18,12 @@ class Post extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           ListTile(
-            leading: const CircleAvatar(
-              backgroundImage: NetworkImage("https://i.pravatar.cc/300"),
+            leading: CircleAvatar(
+              backgroundImage:
+                  NetworkImage("${post.image}${post.id.toString()}"),
             ),
-            title: const Text("Jane Doe"),
-            subtitle: const Text("4 hours ago"),
+            title: Text("${post.firstName} ${post.lastName}"),
+            subtitle: Text(post.created),
             trailing: Padding(
               padding: const EdgeInsets.only(bottom: 26.0),
               child: Row(
@@ -42,7 +44,7 @@ class Post extends StatelessWidget {
                   IconButton(
                     constraints:
                         const BoxConstraints(maxHeight: 16, maxWidth: 30),
-                    onPressed: () {},
+                    onPressed: onDelete,
                     padding: const EdgeInsets.all(0.0),
                     icon: const Icon(
                       Icons.delete_forever_outlined,
@@ -54,13 +56,12 @@ class Post extends StatelessWidget {
             ),
           ),
           const Divider(height: 1),
-          const Padding(
-            padding: EdgeInsets.symmetric(
+          Padding(
+            padding: const EdgeInsets.symmetric(
               vertical: 10.5,
               horizontal: 17.5,
             ),
-            child: Text(
-                "The collapse of the online-advertising market in 2001 made marketing on the Internet seem even less compelling. Website usability, press releases. "),
+            child: Text(post.body),
           ),
           const Divider(height: 1),
           Padding(

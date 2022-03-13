@@ -38,7 +38,7 @@
 
   
 
-11. [ ] 11.What are Keys in Flutter? Explain the difference between them
+11. [x] 11.What are Keys in Flutter? Explain the difference between them
 
   
 
@@ -46,7 +46,7 @@
 
   
 
-13. [ ] 13.When to use var and when to use final?
+13. [x] 13.When to use var and when to use final?
 
   
 
@@ -54,11 +54,11 @@
 
   
 
-15. [ ] 15. Got any other experience with reactive programming?
+15. [x] 15. Got any other experience with reactive programming?
 
   
 
-16. [ ] 16. Got any other experience with state management libraries?
+16. [x] 16. Got any other experience with state management libraries?
 
   
 
@@ -125,7 +125,7 @@
 
   
 
-11. What are Keys in Flutter? Explain the difference between them
+11. Other than global key, I never used keys they usually work within the framework. Keys maintain the state of the widget. There are global keys and local keys. Local keys must be unique in the same element tree of a parent but the global key should be unique in the entire app. We usually use keys when the widget changes position inside tree update order or delete a widget. One example for the global key is when we use it with form state
 
   
 
@@ -133,19 +133,22 @@
 
   
 
-13. When to use var and when to use final?
-
-  
+13. We usually declare our variables with distinct types. Instead of declaring our variables with the types like string, we could use them like this;
+	```
+	var name = “volkan”;
+	```
+	This way dart knows that name is the string we don’t need to declare it with a string keyword. We can use this when we don’t know the first value type is going to be but after that dart will throw an error if we set another value type to a variable. 
+	The final keyword is the same as var; it can detect variable type when it is initialized. But the difference is that the value is read-only and we can't change the value of the variable. It is like const but const is compiled time constant but final is runtime constant. That means the const variable will always have the same value when the program runs. But final can have different values on runtime. 
 
 14. What would happen if the BLoC package wasn’t used in conjunction with the Equatable package for state classes (extending state classes with Equatable)? Nudge if no answer: you updated state, but BLoC state class doesn’t extend Equatable, what’s the consequence on the UI?
 
   
 
-15. Got any other experience with reactive programming?
+15. Yes, I have experience with reactive programming for example I have used react framework. Literally, names come from reactive programming. There are hooks for instance if you use useEffect hook and pass state arrays as a second parameter useEffect hook will observe the passed states and get called when passed states have been changed. Components get re-rendered when states change.
 
   
 
-16. Got any other experience with state management libraries?
+16. Yes, I used get package. It is an extremely fast and lightweight package for state management, dependency injection and route management. There is very little boilerplate code. It uses a reactive(Obx) observer model for tracking changing states. Also implements an MVC pattern for the structure of the app.
 
   
 

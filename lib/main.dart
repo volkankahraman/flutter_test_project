@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_test_project/components/notched_bottom_bar.dart';
-import 'package:flutter_test_project/components/post.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_test_project/blocs/bloc/post_bloc.dart';
+import 'package:flutter_test_project/screens/add_post_form.dart';
+import 'package:flutter_test_project/screens/home_page.dart';
+import 'package:flutter_test_project/services/http_service.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,78 +14,25 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Test',
-      theme: ThemeData(primarySwatch: Colors.blue),
-      home: const HomePage(),
-    );
-  }
-}
-
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
-
-  @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          elevation: 0,
-          backgroundColor: Colors.transparent,
-          title: const ListTile(
-            leading: CircleAvatar(
-              backgroundImage: NetworkImage("https://i.pravatar.cc/300"),
-            ),
-            title: Text("Jane Doe"),
-            subtitle: Text(
-              "@janedoe_29",
-              style: TextStyle(
-                color: Color(0xFFA3A3A3),
-              ),
-            ),
-          ),
-          actions: [
-            IconButton(
-              constraints: const BoxConstraints(maxWidth: 30.0),
-              onPressed: () {},
-              icon: const Icon(
-                Icons.search_rounded,
-                size: 28.0,
-                color: Colors.black,
-              ),
-            ),
-            IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                Icons.menu,
-                color: Colors.black,
-              ),
-            ),
-            SizedBox(width: 10.0),
-          ],
+    return MultiRepositoryProvider(
+      providers: [
+        RepositoryProvider(
+          create: (context) => HttpService(),
         ),
-        body: ListView(children: const <Widget>[
-          Post(),
-          Post(),
-          Post(),
-          Post(),
-          Post(),
-        ]),
-        floatingActionButton: FloatingActionButton(
-          backgroundColor: const Color(0xFFBDBDBD),
-          onPressed: () {},
-          child: const Icon(
-            Icons.add,
-            color: Colors.black,
-          ),
+      ],
+      child: BlocProvider(
+        create: (context) =>
+            PostBloc(RepositoryProvider.of<HttpService>(context))
+              ..add(PostLoaded()),
+        child: MaterialApp(
+          title: 'Flutter Test',
+          theme: ThemeData(primarySwatch: Colors.purple),
+          initialRoute: "/",
+          routes: {
+            "/": (context) => const HomePage(),
+            "/add": (context) => const AddPostForm(),
+          },
         ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        bottomNavigationBar: const NotchedBottomAppBar(),
       ),
     );
   }

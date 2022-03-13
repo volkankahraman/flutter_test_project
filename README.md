@@ -16,7 +16,7 @@ npm i json-server -g
 ``` 
 json-server --watch db.json
 ```
-
+> You need to have json server running in order for the app to work
 For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
