@@ -1,15 +1,6 @@
 {
   "posts": [
     {
-      "id": 1,
-      "image": "https://picsum.photos/250?image=",
-      "title": "Lorem ipsum",
-      "body": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis sed atque illo neque voluptatem natus, odit iure laboriosam laudantium cumque necessitatibus tempora saepe ducimus, accusantium est aperiam harum. Voluptatem, corporis.",
-      "first_name": "Samon",
-      "last_name": "Christian",
-      "created": "1 hours ago"
-    },
-    {
       "id": 2,
       "image": "https://picsum.photos/250?image=",
       "title": "Lorem ipsum",

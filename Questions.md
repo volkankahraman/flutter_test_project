@@ -88,7 +88,7 @@
 
 2. There is three test types commonly used in flutter;
 * Unit Test
-* UI Test
+* Widget Test
 * Integration Test
 
 3. Stateful widgets are immutable objects but they have states in order the track changes and re-render the UI. On the other hand, stateless widgets are also immutable but they can’t change there is state we can call them dumb components. Whenever values change they get destroyed and recreated. Unlike stateful widgets when the state is marked for change when the next frame comes they stay the same but their state and all of their children widgets get replaced with new ones with the new state.
