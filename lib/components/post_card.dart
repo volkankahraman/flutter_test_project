@@ -1,14 +1,32 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test_project/components/icon_text_button.dart';
 import 'package:flutter_test_project/models/post.dart';
 
-class PostCard extends StatelessWidget {
+class PostCard extends StatefulWidget {
   const PostCard({Key? key, required this.post, required this.onDelete})
       : super(key: key);
   final Post post;
   final VoidCallback onDelete;
+  final int _textLimit = 120;
+
+  @override
+  State<PostCard> createState() => _PostCardState();
+}
+
+class _PostCardState extends State<PostCard> {
+  bool readMore = false, readMoreDisabled = true;
+  String? longBody, shortBody;
+
   @override
   Widget build(BuildContext context) {
+    if (widget.post.body.length > widget._textLimit) {
+      shortBody = widget.post.body.substring(0, widget._textLimit) + "...";
+      longBody = widget.post.body;
+    } else {
+      shortBody = widget.post.body;
+      readMoreDisabled = false;
+    }
     return Card(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(15.0),
@@ -19,11 +37,11 @@ class PostCard extends StatelessWidget {
         children: <Widget>[
           ListTile(
             leading: CircleAvatar(
-              backgroundImage:
-                  NetworkImage("${post.image}${post.id.toString()}"),
+              backgroundImage: NetworkImage(
+                  "${widget.post.image}${widget.post.id.toString()}"),
             ),
-            title: Text("${post.firstName} ${post.lastName}"),
-            subtitle: Text(post.created),
+            title: Text("${widget.post.firstName} ${widget.post.lastName}"),
+            subtitle: Text(widget.post.created),
             trailing: Padding(
               padding: const EdgeInsets.only(bottom: 26.0),
               child: Row(
@@ -44,7 +62,7 @@ class PostCard extends StatelessWidget {
                   IconButton(
                     constraints:
                         const BoxConstraints(maxHeight: 16, maxWidth: 30),
-                    onPressed: onDelete,
+                    onPressed: widget.onDelete,
                     padding: const EdgeInsets.all(0.0),
                     icon: const Icon(
                       Icons.delete_forever_outlined,
@@ -61,7 +79,25 @@ class PostCard extends StatelessWidget {
               vertical: 10.5,
               horizontal: 17.5,
             ),
-            child: Text(post.body),
+            child: RichText(
+              text: TextSpan(
+                text: readMore ? longBody : shortBody,
+                style: const TextStyle(color: Colors.black),
+                children: [
+                  if (readMoreDisabled)
+                    TextSpan(
+                      text: readMore ? " Read Less" : " Read More",
+                      style: const TextStyle(color: Colors.blue),
+                      recognizer: TapGestureRecognizer()
+                        ..onTap = () {
+                          setState(() {
+                            readMore = !readMore;
+                          });
+                        },
+                    ),
+                ],
+              ),
+            ),
           ),
           const Divider(height: 1),
           Padding(

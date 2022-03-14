@@ -33,7 +33,7 @@ class _AddPostFormState extends State<AddPostForm> {
       bloc: context.read<PostBloc>(),
       listener: (context, state) {
         print('state changed');
-        if (state is PostAdded) {
+        if (state is PostAddedState) {
           ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
             content: Text('Yay! Post added'),
           ));
